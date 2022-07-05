@@ -16,7 +16,7 @@ class CreateExchangeRateTable extends Migration
         Schema::create('tb_exchange_rate', function (Blueprint $table) {
             $table->id();
             $table->string('coin');
-            $table->decimal('value', 10, 3);
+            $table->string('value', 50);
             $table->timestamps();
         });
     }
