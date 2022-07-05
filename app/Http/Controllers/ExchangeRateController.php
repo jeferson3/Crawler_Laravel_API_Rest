@@ -7,7 +7,7 @@ use App\Http\Resources\FailResponseResource;
 use App\Http\Resources\PaginationResponseResource;
 use App\Http\Resources\SuccessResponseResource;
 use App\Models\ExchangeRate;
-use App\Repository\ExchangeRateRepository;
+use App\Repositories\ExchangeRateRepository;
 use Illuminate\Http\Request;
 
 class ExchangeRateController extends Controller
