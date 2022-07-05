@@ -14,35 +14,17 @@ trait ExchangeRateCraulerService
     public function scrapping(): void
     {
         $client = new Client();
-        ExchangeRate::updateOrCreate(
-            ['coin' => 'dolar'],
-            ['value' => $this->getDolarValue($client)]
-        );
-        ExchangeRate::updateOrCreate(
-            ['coin' => 'euro'],
-            ['value' => $this->getEuroValue($client)]
-        );
+        $url = 'https://valorinveste.globo.com/cotacoes/';
+        $page = $client->request('GET', $url);
+        $page->filter('.ticker__item')->each(function ($node){
+            $coin = $node->filter('.ticker__item__symbol')->text();
+            $value = $node->filter('.ticker__item__value')->text();
+            ExchangeRate::updateOrCreate(
+                ['coin' => $coin],
+                ['value' => $value]
+            );
+        });
     }
 
-    /**
-     * @param Client $client
-     * @return string
-     */
-    private function getDolarValue(Client $client): string
-    {
-        $url = 'https://valorinveste.globo.com/cotacoes/dolar/';
-        $page = $client->request('GET', $url);
-        return $page->filter('.tabela-data__ticker__lastQuote')->text();
-    }
 
-    /**
-     * @param Client $client
-     * @return string
-     */
-    private function getEuroValue(Client $client): string
-    {
-        $url = 'https://valorinveste.globo.com/cotacoes/euro/';
-        $page = $client->request('GET', $url);
-        return $page->filter('.tabela-data__ticker__lastQuote')->text();
-    }
 }
