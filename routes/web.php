@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Goutte\Client;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $url = 'https://valorinveste.globo.com/cotacoes/dolar/';
+    $client = new Client();
+    $page = $client->request('GET', $url);
+    $dolar = $page->filter('.tabela-data__ticker__lastQuote')->text();
+    return view('welcome', compact('dolar'));
 });

@@ -1,0 +1,183 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Dev",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api"
+        }
+    ],
+    "paths": {
+        "/exchange-rate": {
+            "get": {
+                "tags": [
+                    "ExchangeRate"
+                ],
+                "summary": "ExchangeRateController",
+                "description": "Exchange Rate - return data of database",
+                "operationId": "1c1ccbdd0a53047f2c29885e3176046a",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "pagination - per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "pagination - page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "coin",
+                        "in": "query",
+                        "description": "filter - coin name",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response with success"
+                    },
+                    "404": {
+                        "description": "Response with error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ExchangeRate"
+                ],
+                "summary": "ExchangeRateController",
+                "description": "Exchange Rate - Store a newly created resource in storage.",
+                "operationId": "d01bbf43ea7c648c886aa3405f1c67b5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "coin",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "coin": {
+                                        "type": "string",
+                                        "example": "dollar"
+                                    },
+                                    "value": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "10.5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response with success"
+                    },
+                    "404": {
+                        "description": "Response with error"
+                    }
+                }
+            }
+        },
+        "/exchange-rate/{exchange_rate}": {
+            "put": {
+                "tags": [
+                    "ExchangeRate"
+                ],
+                "summary": "ExchangeRateController",
+                "description": "Update the specified resource in storage.",
+                "operationId": "b0c6ae0438e8aa56c848ff2924501b1e",
+                "parameters": [
+                    {
+                        "name": "exchange_rate",
+                        "in": "path",
+                        "description": "exchange rate ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "coin",
+                                    "value"
+                                ],
+                                "properties": {
+                                    "coin": {
+                                        "type": "string",
+                                        "example": "dollar"
+                                    },
+                                    "value": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": "10.5"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Response with success"
+                    },
+                    "404": {
+                        "description": "Response with error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ExchangeRate"
+                ],
+                "summary": "ExchangeRateController",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "6586f03c668ab93f4ff2ef891424f5db",
+                "parameters": [
+                    {
+                        "name": "exchange_rate",
+                        "in": "path",
+                        "description": "exchange rate ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response with success"
+                    },
+                    "404": {
+                        "description": "Response with error"
+                    }
+                }
+            }
+        }
+    }
+}
