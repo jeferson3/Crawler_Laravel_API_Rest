@@ -8,6 +8,7 @@ Requisitos:
 Instalação:
 - Clonar o repositório
 - Instalar as dependências (composer install)
+- Criar o arquivo .env a partir do example.env
 - Criar chave (php artisan key:generate)
 - Criar banco de dados, importar(database/laravel.sql.gz) ou rodar a migration (php artisan:migrate)
 - Iniciar servidor (php artisan serve)
