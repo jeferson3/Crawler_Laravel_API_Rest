@@ -1,3 +1,4 @@
+## Script para scraping de dados de cotações de moedas e disponibilização dos resultados em uma API Rest
 ## Processo de instalação e configuração
 
 Requisitos:
