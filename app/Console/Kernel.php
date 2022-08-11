@@ -2,13 +2,13 @@
 
 namespace App\Console;
 
-use App\Services\ExchangeRateCraulerService;
+use App\Services\ExchangeRateCrawlerService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    use ExchangeRateCraulerService;
+    use ExchangeRateCrawlerService;
 
     /**
      * Define the application's command schedule.

@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\ExchangeRate;
 use Goutte\Client;
 
-trait ExchangeRateCraulerService
+trait ExchangeRateCrawlerService
 {
     /**
      * Get data
